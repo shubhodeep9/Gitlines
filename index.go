@@ -85,6 +85,7 @@ func ExampleScrape() {
 
 func main() {
   ExampleScrape()
+  fmt.Println(count)
   // out_c := make(chan int)
   // //ExampleScrape()
   // go RepoRet("https://github.com/shubhodeep9/Gitlines",out_c,"https://github.com")
