@@ -25,6 +25,9 @@ func GetLines(uri string) int64 {
   val := doc.Find("div.file-info").Text()
   ind := strings.Index(strings.TrimSpace(val)," lines")
   //fmt.Println(strings.TrimSpace(val)[:ind])
+  if ind == -1 {
+    return int64(0)
+  }
   str, _ := strconv.Atoi(strings.TrimSpace(val)[:ind])
   return int64(str)
 }
@@ -81,10 +84,11 @@ func ExampleScrape() {
 }
 
 func main() {
-  out_c := make(chan int)
-  //ExampleScrape()
-  go RepoRet("https://github.com/shubhodeep9/Gitlines",out_c,"https://github.com")
-  <-out_c
-  fmt.Println(count)
+  ExampleScrape()
+  // out_c := make(chan int)
+  // //ExampleScrape()
+  // go RepoRet("https://github.com/shubhodeep9/Gitlines",out_c,"https://github.com")
+  // <-out_c
+  // fmt.Println(count)
   //fmt.Println(GetLines("https://github.com/shubhodeep9/Gitlines/blob/master/.gitignore"))
 }
