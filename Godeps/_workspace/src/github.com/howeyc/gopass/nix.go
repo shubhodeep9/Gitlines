@@ -6,7 +6,7 @@ import (
 	"io"
 	"syscall"
 
-	"webscrap/Godeps/_workspace/src/golang.org/x/crypto/ssh/terminal"
+	"Gitlines/Godeps/_workspace/src/golang.org/x/crypto/ssh/terminal"
 )
 
 var getch = func() (byte, error) {

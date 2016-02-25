@@ -1,8 +1,8 @@
 package jar
 
 import (
+	"Gitlines/Godeps/_workspace/src/github.com/PuerkitoBio/goquery"
 	"net/http"
-	"webscrap/Godeps/_workspace/src/github.com/PuerkitoBio/goquery"
 )
 
 // State represents a point in time.

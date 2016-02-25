@@ -1,14 +1,14 @@
 package main
 
 import (
+	"Gitlines/Godeps/_workspace/src/github.com/PuerkitoBio/goquery"
+	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf"
+	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf/browser"
+	"Gitlines/Godeps/_workspace/src/github.com/howeyc/gopass"
 	"fmt"
 	"log"
 	"strconv"
 	"strings"
-	"webscrap/Godeps/_workspace/src/github.com/PuerkitoBio/goquery"
-	"webscrap/Godeps/_workspace/src/github.com/headzoo/surf"
-	"webscrap/Godeps/_workspace/src/github.com/headzoo/surf/browser"
-	"webscrap/Godeps/_workspace/src/github.com/howeyc/gopass"
 )
 
 /*

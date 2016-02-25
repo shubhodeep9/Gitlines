@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"webscrap/Godeps/_workspace/src/golang.org/x/net/html"
+	"Gitlines/Godeps/_workspace/src/golang.org/x/net/html"
 )
 
 // Document represents an HTML document to be manipulated. Unlike jQuery, which

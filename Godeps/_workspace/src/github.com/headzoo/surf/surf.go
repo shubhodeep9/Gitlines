@@ -2,9 +2,9 @@
 package surf
 
 import (
-	"webscrap/Godeps/_workspace/src/github.com/headzoo/surf/agent"
-	"webscrap/Godeps/_workspace/src/github.com/headzoo/surf/browser"
-	"webscrap/Godeps/_workspace/src/github.com/headzoo/surf/jar"
+	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf/agent"
+	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf/browser"
+	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf/jar"
 )
 
 var (

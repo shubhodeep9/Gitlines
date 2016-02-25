@@ -13,9 +13,9 @@ import (
 	"strings"
 	"time"
 
-	"webscrap/Godeps/_workspace/src/github.com/PuerkitoBio/goquery"
-	"webscrap/Godeps/_workspace/src/github.com/headzoo/surf/errors"
-	"webscrap/Godeps/_workspace/src/github.com/headzoo/surf/jar"
+	"Gitlines/Godeps/_workspace/src/github.com/PuerkitoBio/goquery"
+	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf/errors"
+	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf/jar"
 )
 
 // Attribute represents a Browser capability.

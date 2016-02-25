@@ -1,11 +1,11 @@
 package jar
 
 import (
+	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf/errors"
+	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf/util"
 	"encoding/json"
 	"io/ioutil"
 	"os"
-	"webscrap/Godeps/_workspace/src/github.com/headzoo/surf/errors"
-	"webscrap/Godeps/_workspace/src/github.com/headzoo/surf/util"
 )
 
 // initialBookmarksCapacity is the initial capacity for the bookmarks map.

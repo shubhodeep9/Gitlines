@@ -1,8 +1,8 @@
 package goquery
 
 import (
-	"webscrap/Godeps/_workspace/src/github.com/andybalholm/cascadia"
-	"webscrap/Godeps/_workspace/src/golang.org/x/net/html"
+	"Gitlines/Godeps/_workspace/src/github.com/andybalholm/cascadia"
+	"Gitlines/Godeps/_workspace/src/golang.org/x/net/html"
 )
 
 type siblingType int

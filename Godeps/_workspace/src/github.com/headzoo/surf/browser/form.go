@@ -1,10 +1,10 @@
 package browser
 
 import (
+	"Gitlines/Godeps/_workspace/src/github.com/PuerkitoBio/goquery"
+	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf/errors"
 	"net/url"
 	"strings"
-	"webscrap/Godeps/_workspace/src/github.com/PuerkitoBio/goquery"
-	"webscrap/Godeps/_workspace/src/github.com/headzoo/surf/errors"
 )
 
 // Submittable represents an element that may be submitted, such as a form.

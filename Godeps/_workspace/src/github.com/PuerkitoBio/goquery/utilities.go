@@ -3,7 +3,7 @@ package goquery
 import (
 	"bytes"
 
-	"webscrap/Godeps/_workspace/src/golang.org/x/net/html"
+	"Gitlines/Godeps/_workspace/src/golang.org/x/net/html"
 )
 
 var nodeNames = []string{
