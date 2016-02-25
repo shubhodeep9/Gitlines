@@ -1,6 +1,18 @@
 # Gitlines
 A scraping script in Go, to tell a users total number of lines in all of his scripts.
 
+## Installation
+
+```bash
+$ go get github.com/shubhodeep9/Gitlines
+ ```
+Set $PATH to $GOPATH/bin 
+
+<strong>Execute</strong>
+```bash
+$ Gitlines
+```
+
 ## Successfully DONE:
 Login portal<br />
 Private Repositories access
