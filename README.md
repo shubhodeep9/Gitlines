@@ -27,6 +27,6 @@ Output <br />
 Output Total number of Lines, Repos, Commits and many more<br />
 Embed it to a website.
 
-License <a href="http://opensource.org/licenses/BSD-3-Clause">BSD-3 Clause</a>
+Open Source under MIT License.
 
 May the force be with you.
