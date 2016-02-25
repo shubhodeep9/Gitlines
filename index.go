@@ -4,25 +4,24 @@ import (
   "fmt"
   "log"
   "strings"
+  "github.com/headzoo/surf"
+  "github.com/headzoo/surf/browser"
   "github.com/PuerkitoBio/goquery"
   "strconv"
 )
 
 /*
-@TODO Make the login script
-@TODO Get private repository data
+@TODO Output Total lines plus total repos, and many more statistics
 */
 
 var count int64 = 0
 
-
+var bow *browser.Browser = surf.NewBrowser()
 
 func GetLines(uri string,line chan int64) {
-  doc, err := goquery.NewDocument(uri)
-  if err != nil {
-    log.Fatal(err)
-  }
-  val := doc.Find("div.file-info").Text()
+  bow.Open(uri)
+  
+  val := bow.Find("div.file-info").Text()
   ind := strings.Index(strings.TrimSpace(val)," lines")
   //fmt.Println(strings.TrimSpace(val)[:ind])
   if ind == -1 {
@@ -41,12 +40,10 @@ About: Sends retrieval functions for fetching files
 func RepoRet(uri string, c chan int,baseuri string){
   in_c := make(chan int)
   line := make(chan int64)
-  doc, err := goquery.NewDocument(uri)
-  if err != nil {
-    log.Fatal(err)
-  }
+  bow.Open(uri)
+  
 
-  doc.Find("tr.js-navigation-item").Each(func(i int, s *goquery.Selection) {
+  bow.Find("tr.js-navigation-item").Each(func(i int, s *goquery.Selection) {
     s.Find("td.content").Each(func(j int, sel *goquery.Selection){
       val, _ := sel.Prev().Find("svg").Attr("class")
       //var filetype string
@@ -60,7 +57,7 @@ func RepoRet(uri string, c chan int,baseuri string){
         go RepoRet(baseuri+val,in_c,baseuri)
         <-in_c
       }
-      fmt.Println(sel.Find("a").Text())
+      //fmt.Println(sel.Find("a").Text())
     })
   })
   c <- 1
@@ -70,16 +67,43 @@ func RepoRet(uri string, c chan int,baseuri string){
 func ExampleScrape() {
   c := make(chan int)
   baseuri := "https://github.com"
-  var user string
+  /*
+  Login Script
+  @param Username Password
+  @Url https://github.com/login
+  */
+  var (
+    user string
+    password string
+    )
+  fmt.Println(`Login to proceed:
+    If Login fails, total public repositories lines will be shown,
+    otherwise Public plus Private of the user.
+    Thank You, May the Force be with you!`)
   fmt.Println("Enter username")
   fmt.Scanf("%s",&user)
-  doc, err := goquery.NewDocument("https://github.com/"+user+"?tab=repositories") 
+  fmt.Println("Enter password")
+  fmt.Scanf("%s",&password)
+  bow.Open("https://github.com/login")
+  fm, err := bow.Form("form")
   if err != nil {
-    log.Fatal(err)
+      fmt.Println(err)
   }
 
-  doc.Find("h3.repo-list-name").Each(func(i int, s *goquery.Selection) {
+  fm.Input("login",user)
+  fm.Input("password", password)
+  err = fm.Submit()
+  if err != nil {
+      log.Fatal(err)
+  }
+  //Login End
+
+  bow.Open("https://github.com/"+user+"?tab=repositories") 
+  
+
+  bow.Find("h3.repo-list-name").Each(func(i int, s *goquery.Selection) {
     val, _ := s.Find("a").Attr("href")
+    fmt.Println(val)
     go RepoRet(baseuri+val,c,baseuri)
     <-c
   })
@@ -89,10 +113,4 @@ func ExampleScrape() {
 func main() {
   ExampleScrape()
   fmt.Println(count)
-  // out_c := make(chan int)
-  // //ExampleScrape()
-  // go RepoRet("https://github.com/shubhodeep9/Gitlines",out_c,"https://github.com")
-  // <-out_c
-  // fmt.Println(count)
-  //fmt.Println(GetLines("https://github.com/shubhodeep9/Gitlines/blob/master/.gitignore"))
 }
