@@ -17,7 +17,7 @@ var count int64 = 0
 
 
 
-func GetLines(uri string) int64 {
+func GetLines(uri string,line chan int64) {
   doc, err := goquery.NewDocument(uri)
   if err != nil {
     log.Fatal(err)
@@ -26,10 +26,11 @@ func GetLines(uri string) int64 {
   ind := strings.Index(strings.TrimSpace(val)," lines")
   //fmt.Println(strings.TrimSpace(val)[:ind])
   if ind == -1 {
-    return int64(0)
+    line <-int64(0)
+  } else {
+    str, _ := strconv.Atoi(strings.TrimSpace(val)[:ind])
+    line <-int64(str)
   }
-  str, _ := strconv.Atoi(strings.TrimSpace(val)[:ind])
-  return int64(str)
 }
 
 /*
@@ -39,6 +40,7 @@ About: Sends retrieval functions for fetching files
 */
 func RepoRet(uri string, c chan int,baseuri string){
   in_c := make(chan int)
+  line := make(chan int64)
   doc, err := goquery.NewDocument(uri)
   if err != nil {
     log.Fatal(err)
@@ -51,13 +53,14 @@ func RepoRet(uri string, c chan int,baseuri string){
       if val == "octicon octicon-file-text" {
         val, _ = sel.Find("a").Attr("href")
         //fmt.Println(val)
-        count=count+GetLines(baseuri+val)
+        go GetLines(baseuri+val,line)
+        count=count+<-line
       } else {
         val, _ = sel.Find("a").Attr("href")
         go RepoRet(baseuri+val,in_c,baseuri)
         <-in_c
       }
-      //fmt.Println(sel.Find("a").Text()+" "+filetype)
+      fmt.Println(sel.Find("a").Text())
     })
   })
   c <- 1
