@@ -53,11 +53,13 @@ func RepoRet(uri string, c chan int, baseuri string) {
 				go GetLines(baseuri+val, line)
 				count = count + <-line
 			} else {
+				if sel.Find("a").Text() != "Godeps"{
 				val, _ = sel.Find("a").Attr("href")
 				go RepoRet(baseuri+val, in_c, baseuri)
 				<-in_c
 			}
-			//fmt.Println(sel.Find("a").Text())
+			}
+			fmt.Println(sel.Find("a").Text())
 		})
 	})
 	c <- 1
@@ -110,6 +112,9 @@ func ExampleScrape() {
 }
 
 func main() {
+	// out_c := make(chan int)
+	// go RepoRet("https://github.com/shubhodeep9/AnalyticsWeekly",out_c,"https://github.com")
+	// <-out_c
 	ExampleScrape()
 	fmt.Println(count)
 }
