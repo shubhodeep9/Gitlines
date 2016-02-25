@@ -1,0 +1,61 @@
+{
+	"ImportPath": "webscrap",
+	"GoVersion": "go1.5",
+	"Deps": [
+		{
+			"ImportPath": "github.com/PuerkitoBio/goquery",
+			"Comment": "v0.3.2-84-g4126223",
+			"Rev": "4126223a86db8598275b29db04d511cfdab67cf1"
+		},
+		{
+			"ImportPath": "github.com/andybalholm/cascadia",
+			"Rev": "3ad29d1ad1c4f2023e355603324348cf1f4b2d48"
+		},
+		{
+			"ImportPath": "github.com/headzoo/surf",
+			"Comment": "0.5.6-13-g090bc9c",
+			"Rev": "090bc9cbefd97d49762dd0020ba94194f304e318"
+		},
+		{
+			"ImportPath": "github.com/headzoo/surf/agent",
+			"Comment": "0.5.6-13-g090bc9c",
+			"Rev": "090bc9cbefd97d49762dd0020ba94194f304e318"
+		},
+		{
+			"ImportPath": "github.com/headzoo/surf/browser",
+			"Comment": "0.5.6-13-g090bc9c",
+			"Rev": "090bc9cbefd97d49762dd0020ba94194f304e318"
+		},
+		{
+			"ImportPath": "github.com/headzoo/surf/errors",
+			"Comment": "0.5.6-13-g090bc9c",
+			"Rev": "090bc9cbefd97d49762dd0020ba94194f304e318"
+		},
+		{
+			"ImportPath": "github.com/headzoo/surf/jar",
+			"Comment": "0.5.6-13-g090bc9c",
+			"Rev": "090bc9cbefd97d49762dd0020ba94194f304e318"
+		},
+		{
+			"ImportPath": "github.com/headzoo/surf/util",
+			"Comment": "0.5.6-13-g090bc9c",
+			"Rev": "090bc9cbefd97d49762dd0020ba94194f304e318"
+		},
+		{
+			"ImportPath": "github.com/howeyc/gopass",
+			"Rev": "c89a32868e47b1b7ef388b4d94318b359506400a"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ssh/terminal",
+			"Rev": "1f22c0103821b9390939b6776727195525381532"
+		},
+		{
+			"ImportPath": "golang.org/x/net/html",
+			"Rev": "4599ae7937fce9b670ce32b8ad32bbb7ae726b3e"
+		},
+		{
+			"ImportPath": "golang.org/x/net/html/atom",
+			"Rev": "4599ae7937fce9b670ce32b8ad32bbb7ae726b3e"
+		}
+	]
+}
