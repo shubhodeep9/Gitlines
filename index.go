@@ -1,11 +1,11 @@
 package main
 
 import (
-	"Gitlines/Godeps/_workspace/src/github.com/PuerkitoBio/goquery"
-	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf"
-	"Gitlines/Godeps/_workspace/src/github.com/headzoo/surf/browser"
-	"Gitlines/Godeps/_workspace/src/github.com/howeyc/gopass"
 	"fmt"
+	"github.com/PuerkitoBio/goquery"
+	"github.com/headzoo/surf"
+	"github.com/headzoo/surf/browser"
+	"github.com/howeyc/gopass"
 	"log"
 	"strconv"
 	"strings"
@@ -53,11 +53,11 @@ func RepoRet(uri string, c chan int, baseuri string) {
 				go GetLines(baseuri+val, line)
 				count = count + <-line
 			} else {
-				if sel.Find("a").Text() != "Godeps"{
-				val, _ = sel.Find("a").Attr("href")
-				go RepoRet(baseuri+val, in_c, baseuri)
-				<-in_c
-			}
+				if sel.Find("a").Text() != "Godeps" {
+					val, _ = sel.Find("a").Attr("href")
+					go RepoRet(baseuri+val, in_c, baseuri)
+					<-in_c
+				}
 			}
 			fmt.Println(sel.Find("a").Text())
 		})
@@ -107,6 +107,7 @@ func ExampleScrape() {
 		fmt.Println(val)
 		go RepoRet(baseuri+val, c, baseuri)
 		<-c
+		fmt.Println(count)
 	})
 
 }
