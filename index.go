@@ -19,6 +19,9 @@ var count int64 = 0
 
 var bow *browser.Browser = surf.NewBrowser()
 
+//GetLines takes input as a url and the line channel
+//gives the output in line channel
+//Calculates lines in each file
 func GetLines(uri string, line chan int64) {
 	bow.Open(uri)
 
